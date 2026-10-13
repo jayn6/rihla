@@ -10,6 +10,8 @@ class SearchBox extends StatelessWidget {
      final cs = theme.colorScheme;
     return Container(
       padding: const EdgeInsets.all(12),
+        color: Colors.white70,
+
      
       child: Row(
         children: [

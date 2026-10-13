@@ -62,6 +62,7 @@ class HeroBanner extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                 
                   const Text(
                     'DESTINATION DU MOIS',
                     style: TextStyle(
@@ -70,6 +71,7 @@ class HeroBanner extends StatelessWidget {
                     ),
                   ),
                   Text(
+                    
                     destination.nom,
                     style: const TextStyle(
                       color: Colors.white,
@@ -84,6 +86,10 @@ class HeroBanner extends StatelessWidget {
                       fontSize: 12,
                     ),
                   ),
+                  const Icon(
+                      Icons.location_on,
+                      color: Colors.white70,
+                    ),
                 ],
               ),
             ),
