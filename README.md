@@ -17,6 +17,7 @@ Palier 4:
 <img width="1905" height="1047" alt="Screenshot 2026-10-13 183152" src="https://github.com/user-attachments/assets/9e6403c8-2079-4d1b-9f33-cdc49de9e260" />
 
 7.expanded allows the column to use the remaining width of the row so spacer can push the price to the right.
+
 8. we add 8 lines in destinations.dart (nom,region,categorie,image,note,prix,duree,description) then the loop displays it automatically
 ## Getting Started
 
