@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:rihla/widgets/hero_banner.dart';
 import 'package:rihla/widgets/home_header.dart';
 import 'package:rihla/widgets/search_box.dart'; 
-  
+  import '../data/destinations.dart';
 class HomeScreen extends StatelessWidget { 
   const HomeScreen({super.key}); 
   
@@ -12,7 +13,7 @@ class HomeScreen extends StatelessWidget {
         child: ListView( 
           padding: const EdgeInsets.all(20), 
           children: [ 
-            const HomeHeader(prenom: 'Rihla'), const SizedBox(height: 20,) , const SearchBox(),
+            const HomeHeader(prenom: 'Rihla'), const SizedBox(height: 20,) , const SearchBox(), HeroBanner(destination: destinations.first)
           ], 
         ), 
       ), 
