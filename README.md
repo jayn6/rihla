@@ -24,7 +24,7 @@ A new Flutter project.
 <img width="1906" height="1067" alt="Screenshot 2026-10-20 122939" src="https://github.com/user-attachments/assets/e336ded4-423d-4c2c-98d5-10ef9054d82f" />
 
 9. without setstate the category value will change in the memory but the screen will not rebuild 
-10.
+10.because getter calculates filtered  list and show the items for the selected category everytime build() runs so it stays updated
 11.heroBanner can stay statelesswidget because its content does not based on the category selected
 
 
