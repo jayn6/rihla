@@ -20,6 +20,20 @@ Palier 4:
 
 8. we add 8 lines in destinations.dart (nom,region,categorie,image,note,prix,duree,description) then the loop displays it automatically
 ## Getting Started
+Palier 5:
+<img width="1906" height="1067" alt="Screenshot 2026-10-20 122939" src="https://github.com/user-attachments/assets/e336ded4-423d-4c2c-98d5-10ef9054d82f" />
+
+9. without setstate the category value will change in the memory but the screen will not rebuild 
+10.
+11.heroBanner can stay statelesswidget because its content does not based on the category selected
+
+
+Palier 6:
+<img width="1901" height="867" alt="Screenshot 2026-10-20 123210" src="https://github.com/user-attachments/assets/cb352178-ca31-4314-b376-a0adfea1cfd3" />
+<img width="1893" height="501" alt="image" src="https://github.com/user-attachments/assets/9112e549-d031-427c-93a6-306c6d01be4c" />
+
+Palier 7:
+<img width="1913" height="1067" alt="Screenshot 2026-10-20 144446" src="https://github.com/user-attachments/assets/06c76c87-d009-46d9-91b2-a7a83710a1c4" />
 
 This project is a starting point for a Flutter application.
 
