@@ -27,7 +27,7 @@ bool _conditions = false;
   final _nomCtrl = TextEditingController();
   final _emailCtrl = TextEditingController();
   final _telCtrl = TextEditingController();
-  
+  AutovalidateMode _autoValidation = AutovalidateMode.disabled;
 int get _prixParPersonne => _formule == 'Confort' 
 ? (widget.destination.prix * 1.3).round() 
 : widget.destination.prix;
@@ -124,7 +124,21 @@ int get _total => _prixParPersonne * widget.voyageurs;
 
   // Validation du formulaire
   void _valider() {
-    if (!_formKey.currentState!.validate()) return;
+    if (!_formKey.currentState!.validate()) {
+        setState(() => _autoValidation = AutovalidateMode.onUserInteraction);
+        return;
+  }
+  final reservation = Reservation(
+    destination: widget.destination,
+    nom: _nomCtrl.text.trim(),
+    email: _emailCtrl.text.trim(),
+    telephone: _telCtrl.text.trim(),
+    dateDepart: _date!,
+    voyageurs: widget.voyageurs,
+    formule: _formule,
+);
+    // TODO 1 : remplir avec widget.destination, les contrôleurs (trim),
+    Navigator.pop(context, reservation);
 
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
@@ -142,6 +156,7 @@ int get _total => _prixParPersonne * widget.voyageurs;
 
       body: Form(
         key: _formKey,
+          autovalidateMode: _autoValidation,
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
           child: Column(
@@ -336,16 +351,54 @@ const Text(
       ),
 
       // TODO 7 : Bottom navigation bar
-      bottomNavigationBar: SafeArea(
+     bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: FilledButton.icon(
-            onPressed: _valider,
-            icon: const Icon(Icons.check_circle_outline),
-            label: const Text('Confirmer'),
+
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+
+            children: [
+              // Prix par personne
+              Text(
+                '$_prixParPersonne DT × ${widget.voyageurs}',
+                style: const TextStyle(
+                  fontSize: 15,
+                ),
+              ),
+              const SizedBox(height: 4),
+
+              // Prix total
+              Text(
+                '$_total DT',
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
+              const SizedBox(height: 12),
+
+              // Bouton confirmer
+              SizedBox(
+                width: double.infinity,
+
+                child: FilledButton.icon(
+                  onPressed:
+                      _conditions ? _valider : null,
+
+                  icon: const Icon(
+                    Icons.check_circle_outline,
+                  ),
+
+                  label: const Text('Confirmer'),
+                ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 }
+   

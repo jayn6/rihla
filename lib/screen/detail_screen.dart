@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import '../models/destination.dart';
+import '../models/reservation.dart';
+
 import '../widgets/favorite_button.dart';
 import 'reservation_screen.dart';
 class DetailScreen extends StatefulWidget {
@@ -37,10 +39,54 @@ class _DetailScreenState extends State<DetailScreen> {
       ),
     );
   }
+Future<void> _reserver() async {
+  final reservation = await Navigator.push<Reservation>(
+    context,
+    MaterialPageRoute(
+      builder: (context) => ReservationScreen(
+        destination: widget.destination,
+        voyageurs: _voyageurs,
+      ),
+    ),
+  );
+ if (!mounted) return;
+  if (reservation == null) return;
 
+  // TODO 3 : si reservation est null (retour sans valider), s'arrêter
+  // TODO 4 : si l'écran n'est plus affiché (!mounted), s'arrêter
+ 
+  await showDialog<void>(
+    context: context,
+    builder: (context) => AlertDialog(
+      icon: const Icon(Icons.check_circle, color: Colors.green, size: 48),
+      title: const Text('Réservation confirmée'),
+ content: Text(
+        'Destination : ${reservation.destination.nom}\n'
+        'Voyageurs : ${reservation.voyageurs}\n'
+        'Formule : ${reservation.formule}\n'
+        'Total : ${reservation.total} DT\n'
+        'E-mail : ${reservation.email}',
+      ),                            //          formule, total et e-mail
+      actions: [
+        FilledButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Text('Parfait'),
+        ),
+      ],
+    ),
+  );
+}
   @override
   Widget build(BuildContext context) {
     final destination = widget.destination;
+
+ IconButton _reserverButton() {
+  return IconButton(
+    onPressed: _reserver,
+    icon: const Icon(Icons.check_circle, color: Colors.green),
+  );
+  }
+// Le bouton « Réserver » : onPressed: _reserver,
 
     return Scaffold(
       body: SafeArea(
@@ -271,17 +317,7 @@ class _DetailScreenState extends State<DetailScreen> {
               ),
 
               FilledButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ReservationScreen(
-                        destination: destination,
-                        voyageurs: _voyageurs,
-                      ),
-                    ),
-                  );
-                },
+               onPressed: _reserver,
 
                 child: const Text('Reserver'),
               ),
