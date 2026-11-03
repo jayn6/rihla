@@ -29,6 +29,7 @@ q2 Don't use BuildContext across asynchronous gaps.
 
 q3 A dialog is also part of the navigation stack 
 <img width="1906" height="997" alt="Screenshot 2026-11-03 135358" src="https://github.com/user-attachments/assets/29fbc3d7-ee6a-4119-9234-3824f3259f63" />
+## tp3:
 
 ## Palier2:
 <img width="1906" height="867" alt="Screenshot 2026-10-13 180428" src="https://github.com/user-attachments/assets/e04336b8-df7a-4ac3-9a07-77cbc00c21ce" />
