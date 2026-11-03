@@ -270,10 +270,12 @@ class _DetailScreenState extends State<DetailScreen> {
                 ),
               ),
 
-              FilledButton(
-                onPressed: () {},
+              IconButton.filled(
+                onPressed: () {
+                  
+                },
 
-                child: const Text('Reserver'),
+                icon: const Icon(Icons.check),
               ),
             ],
           ),
