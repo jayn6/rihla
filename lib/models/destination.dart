@@ -9,6 +9,7 @@ class Destination {
   final int prix; // en dinars, par personne
   final String duree;
   final String description;
+  final int group=12;
 
   const Destination({
     required this.nom,

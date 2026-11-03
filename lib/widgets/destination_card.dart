@@ -1,4 +1,4 @@
-
+import '../screen/detail_screen.dart';
 import 'package:flutter/material.dart';
 import '../models/destination.dart';
 import 'package:rihla/widgets/favorite_button.dart';
@@ -17,13 +17,16 @@ class DestinationCard extends StatelessWidget {
  
 
 
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: 
-BorderRadius.circular(20)),
-      elevation: 0,
-      color: cs.surfaceContainerLow,
-      margin: const EdgeInsets.only(bottom: 12),
-      
+    return InkWell(
+   
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailScreen(destination: destination),
+          ),
+        );
+      },
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Row(
