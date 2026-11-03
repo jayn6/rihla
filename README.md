@@ -11,16 +11,22 @@ Q2 using navigator push and detaild screen constructor in materialpageroute insi
 q3 after removing clipbehaviour InkWell may appear outside the rounded card boundaries.
 ## Palier3:
 q1 It checks all the TextFormField validators inside the Form.
+
 q2 inputFormatters: Control what the user can enter while typing(in this case can only enter 8 numbers ) and validator check whether the phone empty when click on valid.
 
 q3 when a screen is closed we call dispose() to release those resources and avoid memory leaks
+
 <img width="1883" height="995" alt="image" src="https://github.com/user-attachments/assets/a604ecae-84aa-47a2-84e2-2571eb560d9c" />
 ## Palier4:
 q1 readonly because the user must select a date not typing manually otherwise the user can enter invalid date.
+
 q2 A getter calculates the value dynamically, so we don't need to update _total manually.
+
 ## Palier5:
 q1 reservation is null , the user didnt click confirm 
+
 q2 Don't use BuildContext across asynchronous gaps.
+
 q3 A dialog is also part of the navigation stack 
 <img width="1906" height="997" alt="Screenshot 2026-11-03 135358" src="https://github.com/user-attachments/assets/29fbc3d7-ee6a-4119-9234-3824f3259f63" />
 
