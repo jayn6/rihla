@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import '../models/destination.dart';
 import '../widgets/favorite_button.dart';
-
+import 'reservation_screen.dart';
 class DetailScreen extends StatefulWidget {
   final Destination destination;
 
@@ -270,12 +270,20 @@ class _DetailScreenState extends State<DetailScreen> {
                 ),
               ),
 
-              IconButton.filled(
+              FilledButton(
                 onPressed: () {
-                  
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ReservationScreen(
+                        destination: destination,
+                        voyageurs: _voyageurs,
+                      ),
+                    ),
+                  );
                 },
 
-                icon: const Icon(Icons.check),
+                child: const Text('Reserver'),
               ),
             ],
           ),
