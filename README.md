@@ -1,12 +1,33 @@
 # rihla
+## tp4:
+## Palier2:
+<img width="1888" height="1007" alt="image" src="https://github.com/user-attachments/assets/cb573321-e02f-42af-8cb0-9d044dfd4572" />
 
-A new Flutter project.
+## Palier2:
+Q1. Yes, the previous screen was kept in the navigation stack.Navigator.push() adds DetailScreen on top.
+Q2 using navigator push and detaild screen constructor in materialpageroute inside destination card then detailscreen receives the selected one
+q3 after removing clipbehaviour InkWell may appear outside the rounded card boundaries
+## Palier3:
+q1 It checks all the TextFormField validators inside the Form.
+q2 inputFormatters: Control what the user can enter while typing(in this case can only enter 8 numbers ) and validator check whether the phone empty when click on valid
+q3 when a screen is closed we call dispose() to release those resources and avoid memory leaks
+<img width="1883" height="995" alt="image" src="https://github.com/user-attachments/assets/a604ecae-84aa-47a2-84e2-2571eb560d9c" />
+## Palier4:
+q1 readonly because the user must select a date not typing manually othinvaerwise the user can enter invalid date
+q2 A getter calculates the value dynamically, so we don't need to update _total manually
+## Palier5:
+q1 reservation is null , the user didnt click confirm 
+q2 Don't use BuildContext across asynchronous gaps.
+q3 A dialog is also part of the navigation stack 
+<img width="1906" height="997" alt="Screenshot 2026-11-03 135358" src="https://github.com/user-attachments/assets/29fbc3d7-ee6a-4119-9234-3824f3259f63" />
+
 ## Palier2:
 <img width="1906" height="867" alt="Screenshot 2026-10-13 180428" src="https://github.com/user-attachments/assets/e04336b8-df7a-4ac3-9a07-77cbc00c21ce" />
 
 1. The avatar moves closer to the text because Expanded no longer takes the remaining space in the Row.
 2. prenom is final because its value is set once and cannot be changed.
 3. cs.primary is a color that comes from the theme while colors.teal is a fixed color , if we changed seedcolor cs.primary changes with the theme’s seedColor, while Colors.teal stays the same.
+4. 
 ## Palier3:
 <img width="1887" height="528" alt="Screenshot 2026-10-13 180901" src="https://github.com/user-attachments/assets/54372ab3-8d42-4fb8-a887-1c2d5f15806d" />
 
