@@ -1,4 +1,29 @@
 # rihla
+## tp5:
+## Palier2:
+
+q1 A factory constructor allows us to create and return a Destination object from JSON data
+
+q2 The value of prix becomes a String instead of an int. Therefore, json['prix'] as int causes a type error
+
+q3 Because the application needs time to communicate with the server and receive the data. future represents a result that will be available lateer
+## Palier3:
+
+q4 late allows us to declare it without giving it a value immediately
+
+q5 it will stay in the loading screen
+
+q6 no the destinations already loaded once , change the category only filtre
+<img width="540" height="1200" alt="WhatsApp Image 2026-11-10 at 3 25 15 PM" src="https://github.com/user-attachments/assets/aa761123-64ff-42fc-b275-817ed5caed80" />
+<img width="540" height="1200" alt="WhatsApp Imge 2026-11-10 at 3 07 48 PM" src="https://github.com/user-attachments/assets/e7175a36-6ed0-49df-a2a9-2d6a7ff66cd9" />
+Q1: the server already has the destination, destiationId is enough
+
+Q2: without content-type the server does not recognise the body as json
+
+Q3: we test mounted after await because the user may leave while waiting for the server's response
+<img width="540" height="1200" alt="WhatsApp Image 2026-11-10 at 3 07 48 PM" src="https://github.com/user-attachments/assets/0b1efb15-899e-4396-b252-1e76512ef800" />
+<img width="540" height="1200" alt="WhatsApp Image 2026-11-10 at 3 25 53 PM" src="https://github.com/user-attachments/assets/300f57ad-598a-4ac7-b91c-47f77491b3c3" />
+
 ## tp4:
 ## Palier2:
 <img width="1888" height="1007" alt="image" src="https://github.com/user-attachments/assets/cb573321-e02f-42af-8cb0-9d044dfd4572" />
