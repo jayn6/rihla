@@ -11,9 +11,9 @@ class ApiConfig {
     }
 
     if (defaultTargetPlatform == TargetPlatform.android) {
-      return 'http://10.0.2.2:$port';
+      return 'http://192.168.1.20:$port';
     }
 
-    return 'http://192.168.1.20:$port';
+    return 'http://localhost:$port';
   }
 }

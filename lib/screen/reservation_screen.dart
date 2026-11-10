@@ -164,7 +164,12 @@ int get _total => _prixParPersonne * widget.voyageurs;
             children: [
 
               // TODO 4 
-              Container(  color: const Color.fromARGB(255, 163, 199, 228),
+              Container( 
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(209, 119, 176, 234),
+                  borderRadius: BorderRadius.circular(12),
+                ),
               child:Row(
                 
                 children: [
@@ -180,7 +185,9 @@ int get _total => _prixParPersonne * widget.voyageurs;
                   const SizedBox(width: 12),
 
                   Expanded(
+
                     child: Column(
+                      
                       crossAxisAlignment:
                           CrossAxisAlignment.start,
                       children: [

@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
         // Error
         if (snapshot.hasError) {
-          return ErreurReseau(
+          return  ErreurReseau(
             message: snapshot.error.toString(),
             onReessayer: _recharger,
           );

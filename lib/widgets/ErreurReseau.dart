@@ -12,24 +12,29 @@ class ErreurReseau extends StatelessWidget {
  
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(Icons.cloud_off, color: Theme.of(context).colorScheme.error, size: 64),
-        const SizedBox(height: 16),
-        Text('Vérifiez que json-server est lancé', style: Theme.of(context).textTheme.bodyLarge),
-        const SizedBox(height: 16),
-        FilledButton.tonalIcon(
-          onPressed: onReessayer,
-          icon: const Icon(Icons.refresh),
-          label: const Text('Réessayer'),
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.cloud_off, color: Theme.of(context).colorScheme.error, size: 64),
+            const SizedBox(height: 16),
+            Text(message),
+            const Text('Vérifiez que json-server est lancé.'),
+            FilledButton.tonalIcon(
+              onPressed: onReessayer,
+              icon: const Icon(Icons.refresh),
+              label: const Text('Réessayer'),
+            ),
+          ],
         ),
-
-      ],
-
-      
-      
+      ),
     );
+
+      
+      
+    
     
 
     // TODO 4 : Column centrée : Icon(Icons.cloud_off) en couleur d'erreur,

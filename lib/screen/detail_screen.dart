@@ -5,6 +5,7 @@ import '../models/reservation.dart';
 
 import '../widgets/favorite_button.dart';
 import 'reservation_screen.dart';
+import '../services/api_service.dart';
 class DetailScreen extends StatefulWidget {
   final Destination destination;
 
@@ -48,25 +49,39 @@ Future<void> _reserver() async {
         voyageurs: _voyageurs,
       ),
     ),
-  );
- if (!mounted) return;
+   );  // inchangé
   if (reservation == null) return;
-
-  // TODO 3 : si reservation est null (retour sans valider), s'arrêter
-  // TODO 4 : si l'écran n'est plus affiché (!mounted), s'arrêter
+  if (!mounted) return;
  
+  final String id;
+  try {
+    id = await ApiService.creerReservation(reservation);
+  } catch (e) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar( 
+      const SnackBar(
+        content: Text('Envoi impossible : json-server est-il lancé ?'),
+        backgroundColor: Colors.red,
+        duration: Duration(seconds: 2),
+      ),
+    );
+    // TODO 6 : SnackBar rouge « Envoi impossible : json-server est-il lancé ? »
+    return;   // pas de confirmation si rien n'est enregistré
+  }
+ 
+  if (!mounted) return;
   await showDialog<void>(
     context: context,
     builder: (context) => AlertDialog(
       icon: const Icon(Icons.check_circle, color: Colors.green, size: 48),
       title: const Text('Réservation confirmée'),
- content: Text(
-        'Destination : ${reservation.destination.nom}\n'
-        'Voyageurs : ${reservation.voyageurs}\n'
-        'Formule : ${reservation.formule}\n'
-        'Total : ${reservation.total} DT\n'
-        'E-mail : ${reservation.email}',
-      ),                            //          formule, total et e-mail
+      content: Text( 'N° de réservation : $id\n'
+            'Nom: ${reservation.nom}\n'
+            'Destination: ${reservation.destination.nom}\n'
+            'Voyageurs: ${reservation.voyageurs}\n'
+            'Formule: ${reservation.formule}\n'
+            'Tot: ${reservation.total} DT \n'
+            'Email: ${reservation.email}\n'),
       actions: [
         FilledButton(
           onPressed: () => Navigator.pop(context),
@@ -75,6 +90,7 @@ Future<void> _reserver() async {
       ],
     ),
   );
+
 }
   @override
   Widget build(BuildContext context) {
@@ -326,5 +342,6 @@ Future<void> _reserver() async {
         ),
       ),
     );
+
   }
 }
