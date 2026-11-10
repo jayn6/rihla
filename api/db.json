@@ -1,0 +1,29 @@
+{
+  "destinations": [
+    {
+      "id": "1",
+      "nom": "Sidi Bou Saïd",
+      "region": "Tunis",
+      "categorie": "Patrimoine",
+      "image": "assets/images/sidi_bou_said.png",
+      "note": 4.9,
+      "prix": 180,
+      "duree": "1 jour",
+      "description": "Village perché au-dessus du golfe de Tunis..."
+    }
+  ],
+  "reservations": [
+    {
+      "destinationId": "2",
+      "nom": "Test",
+      "email": "test@mail.tn",
+      "telephone": "22123456",
+      "dateDepart": "2026-12-15T00:00:00.000",
+      "voyageurs": 2,
+      "formule": "Confort",
+      "total": 1092,
+      "id": "vesuc1ZfcSQ"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
