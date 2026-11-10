@@ -1,6 +1,7 @@
 /// Modèle d'une destination touristique.
 /// Tous les champs sont `final` : une destination ne change pas après sa création.
 class Destination {
+  final String id;
   final String nom;
   final String region;
   final String categorie; // 'Plage', 'Désert' ou 'Patrimoine'
@@ -12,6 +13,7 @@ class Destination {
   final int group=12;
 
   const Destination({
+    required this.id,
     required this.nom,
     required this.region,
     required this.categorie,
@@ -21,4 +23,23 @@ class Destination {
     required this.duree,
     required this.description,
   });
+  factory Destination.fromJson(Map<String, dynamic> json) {
+    return Destination(
+      id: json['id'].toString(),
+      nom: json['nom'] as String,
+      region: json['region'] as String,
+      categorie: json['categorie'] as String,
+      image: json['image'] as String,
+      note: (json['note'] as num).toDouble(),
+      prix: json['prix'] as int,
+      duree: json['duree'] as String,
+      description: json['description'] as String,
+      // TODO 1 : region, categorie, image, duree, description (as String)
+      // TODO 2 : note -> double. Attention : 5 arrive en int, 4.8 en double
+      // TODO 3 : prix -> int
+    );
+  }
+
+
+  
 }
