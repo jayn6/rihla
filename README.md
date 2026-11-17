@@ -1,5 +1,9 @@
 # rihla
 ## tp6:
+<img width="612" height="611" alt="image" src="https://github.com/user-attachments/assets/54de94ef-ba3f-4a3a-9c7d-887128e9586b" />
+
+<img width="612" height="933" alt="image" src="https://github.com/user-attachments/assets/6822df35-41d9-45df-a93f-ec636c15c0fd" />
+
 <img width="613" height="177" alt="Screenshot 2026-11-17 115825" src="https://github.com/user-attachments/assets/8aa72099-a18b-4475-89d4-65c842867e13" />
 
 <img width="1272" height="297" alt="Screenshot 2026-11-17 120037" src="https://github.com/user-attachments/assets/67e1986d-4028-4ba4-a156-3280b4ab81be" />
