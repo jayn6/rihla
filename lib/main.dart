@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart'; 
 import 'screen/home_screen.dart'; 
-  
+  import 'package:provider/provider.dart'; 
+  import 'providers/favoris_model.dart';
 void main() { 
   runApp(const RihlaApp()); 
 } 
@@ -10,6 +11,11 @@ class RihlaApp extends StatelessWidget {
   
   @override 
   Widget build(BuildContext context) { 
+    void main() { 
+      runApp( ChangeNotifierProvider( 
+      create: (_) => FavorisModel(), 
+      child: const RihlaApp(),
+       ), ); }
     return MaterialApp( 
       title: 'Rihla', 
       debugShowCheckedModeBanner: false, 
@@ -19,4 +25,5 @@ class RihlaApp extends StatelessWidget {
       ), 
       home: const HomeScreen(), 
     ); 
+    
   } } 
