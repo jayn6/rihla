@@ -6,7 +6,9 @@ import 'package:rihla/widgets/home_header.dart';
 import 'package:rihla/widgets/search_box.dart';
 import 'package:rihla/widgets/destination_card.dart';
 import 'package:rihla/widgets/section_title.dart';
-
+import '../providers/favoris_model.dart';
+import 'favoris_screen.dart';
+import 'package:provider/provider.dart';
 import '../data/destinations.dart';
 import '../models/destination.dart';
 import '../services/api_service.dart';
@@ -138,16 +140,24 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     );
   }
-
+Widget _construirePage() {
+  switch (_onglet) {
+    case 1:
+      return const FavorisScreen();
+    case 2:
+      return const Center(child: Text('Profil'));
+    default:
+      return _construireExplorer();
+  }
+}
   @override
   Widget build(BuildContext context) {
+    final nombreFavoris = context.watch<FavorisModel>().nombre;
     return Scaffold(
       body: SafeArea(
         child: _onglet == 0
             ? _construireExplorer()
-            : const Center(
-                child: Text('Bientôt disponible'),
-              ),
+            : _construirePage(),
       ),
 
       bottomNavigationBar: NavigationBar(
@@ -157,23 +167,29 @@ class _HomeScreenState extends State<HomeScreen> {
             _onglet = index;
           });
         },
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.explore_outlined),
-            selectedIcon: Icon(Icons.explore),
-            label: 'Explorer',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.favorite_border),
-            selectedIcon: Icon(Icons.favorite),
-            label: 'Favoris',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.person_outline),
-            selectedIcon: Icon(Icons.person),
-            label: 'Profil',
-          ),
-        ],
+       destinations: [
+  const NavigationDestination(
+    icon: Icon(Icons.explore_outlined),
+    selectedIcon: Icon(Icons.explore),
+    label: 'Explorer',
+  ),
+  NavigationDestination(
+    icon: Badge(
+      label: Text(nombreFavoris.toString()),
+      child: const Icon(Icons.favorite_border),
+    ),
+    selectedIcon: Badge(
+      label: Text(nombreFavoris.toString()),
+      child: const Icon(Icons.favorite),
+    ),
+    label: 'Favoris',
+  ),
+  const NavigationDestination(
+    icon: Icon(Icons.person_outline),
+    selectedIcon: Icon(Icons.person),
+    label: 'Profil',
+  ),
+],
       ),
     );
   }
