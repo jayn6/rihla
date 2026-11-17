@@ -129,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
         if (filtrees.isEmpty)
           const Center(
-            child: Text('Aucune destination disponible'),
+            child: Text('Aucun destination disponible'),
           ),
 
         for (final d in filtrees)
