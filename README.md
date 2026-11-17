@@ -1,4 +1,17 @@
 # rihla
+## tp6:
+<img width="613" height="177" alt="Screenshot 2026-11-17 115825" src="https://github.com/user-attachments/assets/8aa72099-a18b-4475-89d4-65c842867e13" />
+
+<img width="1272" height="297" alt="Screenshot 2026-11-17 120037" src="https://github.com/user-attachments/assets/67e1986d-4028-4ba4-a156-3280b4ab81be" />
+
+<img width="1231" height="685" alt="Screenshot 2026-11-17 122502" src="https://github.com/user-attachments/assets/712420f4-e92c-4768-8776-76df70d5f459" />
+| # | Outil Copilot | Demande / intention | Décision | Pourquoi |
+|---|---|---|---|---|
+| 1 | Complétion du TODO `basculer` dans `FavorisModel` | Ajouter ou retirer une destination des favoris | Modifiée | `notifyListeners()` a été ajouté après la modification pour actualiser les écrans. |
+| 2 | Implémentation de `FavoriteButton` | Afficher un cœur plein ou vide et basculer le favori au clic | Acceptée | Le bouton reflète l’état du favori et appelle le modèle au clic. |
+| 3 | Création de `FavorisScreen` | Afficher les favoris ou un message si la liste est vide | Modifiée | Le widget a été organisé en `StatelessWidget` avec une liste et un état vide. |
+| 4 | Mise en place de la barre de navigation | Ajouter Explorer, Favoris avec compteur, et Profil | Acceptée | Les trois onglets correspondent aux pages et leurs index. |
+| 5 | Correction des erreurs `FavoriteButton` | Fournir le paramètre obligatoire `destination` | Modifiée | Le bouton reçoit la destination réelle depuis la carte ou l’écran détail, plutôt qu’une destination fictive. |
 ## tp5:
 ## Palier2:
 
