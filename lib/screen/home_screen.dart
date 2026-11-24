@@ -167,23 +167,30 @@ Widget _construirePage() {
             _onglet = index;
           });
         },
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.explore_outlined),
-            selectedIcon: Icon(Icons.explore),
-            label: 'Explorer',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.favorite_border),
-            selectedIcon: Icon(Icons.favorite),
-            label: 'Favoris',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.person_outline),
-            selectedIcon: Icon(Icons.person),
-            label: 'Profil',
-          ),
-        ],
+       destinations: [
+  const NavigationDestination(
+    icon: Icon(Icons.explore_outlined),
+    selectedIcon: Icon(Icons.explore),
+    label: 'Explorer',
+  ),
+  NavigationDestination(
+    icon: Badge(
+      label: Text(nombreFavoris.toString()),
+      child: const Icon(Icons.favorite_border),
+    ),
+    selectedIcon: Badge(
+      label: Text(nombreFavoris.toString()),
+      child: const Icon(Icons.favorite),
+    ),
+    label: 'Favoris',
+  ),
+  const NavigationDestination(
+    icon: Icon(Icons.person_outline),
+    selectedIcon: Icon(Icons.person),
+    label: 'Mes voyages',
+  ),
+],
+       
       ),
     );
   }

@@ -41,5 +41,18 @@ class Destination {
   }
 
 
+Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'nom': nom,
+      'region': region,
+      'categorie': categorie,
+      'image': image,
+      'note': note,
+      'prix': prix,
+      'duree': duree,
+      'description': description,
+    };
+  }
   
 }

@@ -141,7 +141,7 @@ Future<void> _reserver() async {
                     Positioned(
                       top: 16,
                       right: 16,
-                      child: const FavoriteButton(),
+                      child: FavoriteButton(destination: destination),
                     ),
 
                     Positioned(
