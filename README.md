@@ -1,8 +1,11 @@
 # rihla
 ## tp7:
 q1:because shared preferences supports simple data types like strings and lists of strings
+
 q2:favorisModel().charger() returns a future instead of the model
+
 q3:because the favorites are loaded into memory, but the interface is not notified
+
 <img width="1916" height="993" alt="Screenshot 2026-11-24 114424" src="https://github.com/user-attachments/assets/f7e37850-33ed-4dc2-bca3-847cbf1ad674" />
 <img width="1910" height="836" alt="image" src="https://github.com/user-attachments/assets/882b2c31-9fd0-4c60-a432-768086a13e95" />
 <img width="1198" height="896" alt="image" src="https://github.com/user-attachments/assets/83085a10-8f6d-4b9c-b434-b3ec9863cc55" />
