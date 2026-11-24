@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:rihla/widgets/hero_banner.dart';
@@ -6,13 +5,17 @@ import 'package:rihla/widgets/home_header.dart';
 import 'package:rihla/widgets/search_box.dart';
 import 'package:rihla/widgets/destination_card.dart';
 import 'package:rihla/widgets/section_title.dart';
+
 import '../providers/favoris_model.dart';
 import 'favoris_screen.dart';
+
 import 'package:provider/provider.dart';
+
 import '../data/destinations.dart';
 import '../models/destination.dart';
 import '../services/api_service.dart';
 import '../widgets/ErreurReseau.dart';
+import '../providers/reglages_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -55,27 +58,33 @@ class _HomeScreenState extends State<HomeScreen> {
     return FutureBuilder<List<Destination>>(
       future: _futurDestinations,
       builder: (context, snapshot) {
-
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return const Center(child: CircularProgressIndicator());
         }
 
-        // Error
         if (snapshot.hasError) {
-          return  ErreurReseau(
+          return ErreurReseau(
             message: snapshot.error.toString(),
             onReessayer: _recharger,
           );
         }
 
-        // Data received
         final destinations = snapshot.data ?? [];
 
         return RefreshIndicator(
           onRefresh: _recharger,
-          child: _construireAccueil(destinations),
+          child: Column(
+            children: [
+              if (ApiService.depuisCache)
+                Container(
+                  width: double.infinity,
+                  color: Colors.amber.shade100,
+                  padding: const EdgeInsets.all(8),
+                  child: const Text('Hors connexion : données enregistrées'),
+                ),
+              Expanded(child: _construireAccueil(destinations)),
+            ],
+          ),
         );
       },
     );
@@ -120,44 +129,53 @@ class _HomeScreenState extends State<HomeScreen> {
 
         const SizedBox(height: 12),
 
-        const SectionTitle(
-          title: 'Populaires',
-          action: 'Voir tout',
-        ),
+        const SectionTitle(title: 'Populaires', action: 'Voir tout'),
 
         const SizedBox(height: 12),
 
         if (filtrees.isEmpty)
-          const Center(
-            child: Text('Aucun destination disponible'),
-          ),
+          const Center(child: Text('Aucun destination disponible')),
 
         for (final d in filtrees)
-          DestinationCard(
-            key: ValueKey(d.id),
-            destination: d,
-          ),
+          DestinationCard(key: ValueKey(d.id), destination: d),
       ],
     );
   }
-Widget _construirePage() {
-  switch (_onglet) {
-    case 1:
-      return const FavorisScreen();
-    case 2:
-      return const Center(child: Text('Profil'));
-    default:
-      return _construireExplorer();
+
+  Widget _construirePage() {
+    switch (_onglet) {
+      case 1:
+        return const FavorisScreen();
+      case 2:
+        return const Center(child: Text('Profil'));
+      default:
+        return _construireExplorer();
+    }
   }
-}
+
   @override
   Widget build(BuildContext context) {
     final nombreFavoris = context.watch<FavorisModel>().nombre;
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Rihla'),
+
+        actions: [
+          IconButton(
+            icon: Icon(
+              context.watch<ReglagesModel>().sombre
+                  ? Icons.light_mode
+                  : Icons.dark_mode,
+            ),
+
+            onPressed: () {
+              context.read<ReglagesModel>().basculerTheme();
+            },
+          ),
+        ],
+      ),
       body: SafeArea(
-        child: _onglet == 0
-            ? _construireExplorer()
-            : _construirePage(),
+        child: _onglet == 0 ? _construireExplorer() : _construirePage(),
       ),
 
       bottomNavigationBar: NavigationBar(
@@ -167,29 +185,29 @@ Widget _construirePage() {
             _onglet = index;
           });
         },
-       destinations: [
-  const NavigationDestination(
-    icon: Icon(Icons.explore_outlined),
-    selectedIcon: Icon(Icons.explore),
-    label: 'Explorer',
-  ),
-  NavigationDestination(
-    icon: Badge(
-      label: Text(nombreFavoris.toString()),
-      child: const Icon(Icons.favorite_border),
-    ),
-    selectedIcon: Badge(
-      label: Text(nombreFavoris.toString()),
-      child: const Icon(Icons.favorite),
-    ),
-    label: 'Favoris',
-  ),
-  const NavigationDestination(
-    icon: Icon(Icons.person_outline),
-    selectedIcon: Icon(Icons.person),
-    label: 'Profil',
-  ),
-],
+        destinations: [
+          const NavigationDestination(
+            icon: Icon(Icons.explore_outlined),
+            selectedIcon: Icon(Icons.explore),
+            label: 'Explorer',
+          ),
+          NavigationDestination(
+            icon: Badge(
+              label: Text(nombreFavoris.toString()),
+              child: const Icon(Icons.favorite_border),
+            ),
+            selectedIcon: Badge(
+              label: Text(nombreFavoris.toString()),
+              child: const Icon(Icons.favorite),
+            ),
+            label: 'Favoris',
+          ),
+          const NavigationDestination(
+            icon: Icon(Icons.person_outline),
+            selectedIcon: Icon(Icons.person),
+            label: 'Mes voyages',
+          ),
+        ],
       ),
     );
   }

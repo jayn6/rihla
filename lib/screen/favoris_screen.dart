@@ -8,7 +8,7 @@ class FavorisScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favoris = context.watch<FavorisModel>().liste;
+    final favoris = context.watch<FavorisModel>().favoris;
 
     if (favoris.isEmpty) {
       return const Center(child: Text('Aucun favori pour le moment'));
