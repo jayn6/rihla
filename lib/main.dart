@@ -5,7 +5,12 @@ import 'providers/favoris_model.dart';
 import 'screen/home_screen.dart';
 import 'providers/reglages_model.dart';
 
-void main() {
+Future<void> main() async {
+   WidgetsFlutterBinding.ensureInitialized();
+
+  final favorisModel = FavorisModel();
+  await favorisModel.charger();
+
   runApp(
     MultiProvider(
       providers: [

@@ -16,10 +16,10 @@ class FavorisModel extends ChangeNotifier {
 
   int get nombre => _favoris.length;
 
-  bool basculer(Destination d) {
+  Future<bool> basculer(Destination d) async {
     final ajoute = _favoris.remove(d.id) == null;
     if (ajoute) _favoris[d.id] = d;
-    _sauvegarder(); // TP7 : recopie sur le disque
+    await _sauvegarder(); // TP7 : recopie sur le disque
     notifyListeners();
     return ajoute;
   }
