@@ -13,7 +13,7 @@ import '../data/destinations.dart';
 import '../models/destination.dart';
 import '../services/api_service.dart';
 import '../widgets/ErreurReseau.dart';
-
+import '../providers/reglages_model.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -154,6 +154,23 @@ Widget _construirePage() {
   Widget build(BuildContext context) {
     final nombreFavoris = context.watch<FavorisModel>().nombre;
     return Scaffold(
+      appBar: AppBar(
+  title: const Text('Rihla'),
+
+  actions: [
+    IconButton(
+      icon: Icon(
+        context.watch<ReglagesModel>().sombre
+            ? Icons.light_mode
+            : Icons.dark_mode,
+      ),
+
+      onPressed: () {
+        context.read<ReglagesModel>().basculerTheme();
+      },
+    ),
+  ],
+),
       body: SafeArea(
         child: _onglet == 0
             ? _construireExplorer()
